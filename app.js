@@ -26,7 +26,7 @@ mongoose.Promise = global.Promise;
 
 mongoose
   .connect(
-    "mongodb+srv://kaushal:MO7nQqX8DYq18Q4p@cluster0-uwlnb.mongodb.net/digtab",
+    "mongodb+srv://kaushal:MO7nQqX8DYq18Q4p@cluster0-uwlnb.mongodb.net/digtab?retryWrites=true&w=majority",
     {
       useMongoClient: true
     }
