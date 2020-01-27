@@ -51,6 +51,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
@@ -202,9 +203,9 @@
         <div class="innercertificate">
             <div class="topbar">
                 <img src="/logomain.jpeg" alt="DigTab Community" class="logomain">
-                <i class="fas fa-download dldicon"></i>
-                <p class="smallplaceholder">ID: <span>WS/0001/29012020</span></p>
-                <p class="dateplaceholder">Date: <span>{{user.date}}</span></p>
+                <i class="fas fa-download dldicon download"></i>
+                <p class="smallplaceholder">ID: <span>WS/{{user.id}}/27012020</span></p>
+                <p class="dateplaceholder">Date: <span>Mon , Jan 27 , 2020</span></p>
             </div>
             <div class="titlehead largeplaceholder">
                 <h1 class="innermaintext">Certificate of Participation</h1>
@@ -248,4 +249,11 @@
     </div>
 
 </body>
+<script>
+    $('.download').click(function () {
+        window.print()
+    })
+
+</script>
+
 </html>
