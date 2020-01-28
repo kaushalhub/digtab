@@ -55,7 +55,7 @@ router.post("/register", (req, res) => {
       cnfpassword: req.body.cnfpassword
     });
   } else {
-    User.find({ email: req.body.email }).then(user => {
+    User.findOne({ email: req.body.email }).then(user => {
       if (user) {
         req.flash("error_msg", "Email Already Registered");
         res.redirect("/users/register");
@@ -69,7 +69,6 @@ router.post("/register", (req, res) => {
           userid: req.body.userid,
           password: req.body.password
         });
-
         bcrypt.genSalt(10, (err, salt) => {
           bcrypt.hash(newUser.password, salt, (err, hash) => {
             if (err) throw err;
