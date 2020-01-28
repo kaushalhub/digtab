@@ -9,8 +9,8 @@ const User = mongoose.model("users");
 
 // Login Module
 
-router.get("/login", (req, res) => {
-  res.render("users/login");
+router.get("/admin", (req, res) => {
+  res.render("admin");
 });
 
 // Register Module
@@ -55,9 +55,13 @@ router.post("/register", (req, res) => {
       cnfpassword: req.body.cnfpassword
     });
   } else {
-    User.find({ email: req.body.email }).then(user => {
+    User.find({ email: req.body.email, userid: req.body.userid }).then(user => {
       if (user) {
-        req.flash("error_msg", "Email Already Registered");
+        req.flash(
+          "error_msg",
+          "Email Already Registered",
+          "UserID Already Registred"
+        );
         res.redirect("/users/register");
       } else {
         const newUser = new User({
