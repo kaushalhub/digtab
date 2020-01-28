@@ -50,13 +50,18 @@ router.post("/register", (req, res) => {
       mobile: req.body.mobile,
       collagename: req.body.collagename,
       gender: req.body.gender,
+      userid: req.body.userid,
       password: req.body.password,
       cnfpassword: req.body.cnfpassword
     });
   } else {
-    User.findOne({ email: req.body.email }).then(user => {
+    User.find({ email: req.body.email, userid: req.body.userid }).then(user => {
       if (user) {
-        req.flash("error_msg", "Email Already Registered");
+        req.flash(
+          "error_msg",
+          "Email Already Registered",
+          "UserID Already Registred"
+        );
         res.redirect("/users/register");
       } else {
         const newUser = new User({
@@ -65,8 +70,10 @@ router.post("/register", (req, res) => {
           mobile: req.body.mobile,
           collagename: req.body.collagename,
           gender: req.body.gender,
+          userid: req.body.userid,
           password: req.body.password
         });
+
         bcrypt.genSalt(10, (err, salt) => {
           bcrypt.hash(newUser.password, salt, (err, hash) => {
             if (err) throw err;

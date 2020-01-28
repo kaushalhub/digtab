@@ -24,6 +24,10 @@ const UserSchema = new Schema({
     type: String,
     require: true
   },
+  userid: {
+    type: String,
+    require: true
+  },
   password: {
     type: String,
     require: true
