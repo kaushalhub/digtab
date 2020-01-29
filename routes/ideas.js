@@ -44,7 +44,7 @@ router.get("/edit/:id", (req, res) => {
 
 // Process Form Data
 
-router.post("/", ensureAuthenticated, (req, res) => {
+router.post("/", (req, res) => {
   let errors = [];
 
   if (!req.body.title) {
@@ -58,8 +58,7 @@ router.post("/", ensureAuthenticated, (req, res) => {
     res.render("ideas/add", {
       errors: errors,
       title: req.body.title,
-      details: req.body.details,
-      material: req.body.material
+      details: req.body.details
     });
   } else {
     const newUser = {
@@ -67,8 +66,7 @@ router.post("/", ensureAuthenticated, (req, res) => {
       details: req.body.details,
       user: req.user.name,
       user: req.user.collagename,
-      user: req.user.gender,
-      material: req.body.material
+      user: req.user.gender
     };
     new Idea(newUser).save().then(idea => {
       req.flash("success_msg", "Certificate Added Successfully");
